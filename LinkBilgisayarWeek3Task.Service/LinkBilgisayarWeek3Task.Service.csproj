@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LinkBilgisayarWeek3Task.Data\LinkBilgisayarWeek3Task.Data.csproj" />
+  </ItemGroup>
+
 </Project>

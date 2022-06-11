@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LinkBilgisayarWeek3Task.Data.Migrations
 {
     [DbContext(typeof(LinkDbContext))]
-    [Migration("20220611000829_InitialCreate")]
+    [Migration("20220611015828_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,30 +42,6 @@ namespace LinkBilgisayarWeek3Task.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("LinkBilgisayarWeek3Task.Data.Entities.Orders", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("LinkBilgisayarWeek3Task.Data.Entities.Product", b =>
@@ -118,21 +94,6 @@ namespace LinkBilgisayarWeek3Task.Data.Migrations
                     b.ToTable("ProductFeatures");
                 });
 
-            modelBuilder.Entity("OrdersProduct", b =>
-                {
-                    b.Property<int>("OrdersId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("OrdersId", "ProductsId");
-
-                    b.HasIndex("ProductsId");
-
-                    b.ToTable("OrdersProduct");
-                });
-
             modelBuilder.Entity("LinkBilgisayarWeek3Task.Data.Entities.Product", b =>
                 {
                     b.HasOne("LinkBilgisayarWeek3Task.Data.Entities.Category", "Category")
@@ -153,21 +114,6 @@ namespace LinkBilgisayarWeek3Task.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("OrdersProduct", b =>
-                {
-                    b.HasOne("LinkBilgisayarWeek3Task.Data.Entities.Orders", null)
-                        .WithMany()
-                        .HasForeignKey("OrdersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LinkBilgisayarWeek3Task.Data.Entities.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("LinkBilgisayarWeek3Task.Data.Entities.Category", b =>

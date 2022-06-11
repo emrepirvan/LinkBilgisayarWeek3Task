@@ -17,6 +17,5 @@ namespace LinkBilgisayarWeek3Task.Data.Entities
         public Category Category { get; set; } //Navigation Property //DTO'ya atarken navigation propertleri almıyoruz çünkü bunları sadece EF core kullanıyor
 
         public ProductFeature ProductFeature { get; set; }
-        public ICollection<Orders> Orders { get; set; }
     }
 }
